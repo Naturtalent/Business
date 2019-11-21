@@ -13,7 +13,7 @@
 	</parent>
 
 	<modules>		
-		<module>it.naturtalent.business.ui</module>
+		<module>it.naturtalent.business.office</module>
 	</modules>
 
 </project>

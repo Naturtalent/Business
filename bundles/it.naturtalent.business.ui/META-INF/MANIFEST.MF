@@ -1,8 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: Ui
-Bundle-SymbolicName: it.naturtalent.business.ui
-Bundle-Version: 1.0.0.qualifier
-Bundle-Vendor: Dieter Apel
-Automatic-Module-Name: it.naturtalent.business.ui
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
