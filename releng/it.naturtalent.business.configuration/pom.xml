@@ -10,8 +10,7 @@
 		<tycho.version>1.0.0</tycho.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
-		<repo.url>http://download.eclipse.org/releases/latest</repo.url>
-		<url.updateSite>file:/media/dieter/MAXONE/UpdateSites</url.updateSite>
+		<target.path>it.naturtalent.business.target</target.path>	
 	</properties>
 	
 	<!-- Repositories should be commented out to only use the target definition --> 
@@ -90,7 +89,7 @@
 				<target>
 					<artifact>
 						<groupId>it.naturtalent.business</groupId>
-						<artifactId>it.naturtalent.business.target</artifactId>
+						<artifactId>${target.path}</artifactId>
 						<version>1.0.0-SNAPSHOT</version>
 					</artifact>
 				</target>
