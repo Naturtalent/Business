@@ -1,15 +1,10 @@
 package it.naturtalent.business.office.preferences;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.lang3.StringUtils;
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.e4.ui.internal.workbench.swt.WorkbenchSWTActivator;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jface.dialogs.IDialogSettings;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
@@ -18,15 +13,15 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.ui.forms.widgets.Hyperlink;
 
 import it.naturtalent.application.IPreferenceNode;
-import it.naturtalent.e4.office.ui.ODFDefaultWriteAdapter;
+import it.naturtalent.business.office.Messages;
 import it.naturtalent.e4.office.ui.OfficeUtils;
 import it.naturtalent.e4.office.ui.preferences.OfficeDefaultPreferenceUtils;
 import it.naturtalent.e4.preferences.AbstractPreferenceAdapter;
 import it.naturtalent.office.model.address.AddressPackage;
 import it.naturtalent.office.model.address.Referenz;
 import it.naturtalent.office.model.address.Referenzen;
-import it.naturtalent.business.office.Messages;
-import it.naturtalent.business.office.ODFBusinessWriteAdapter;
+
+import org.eclipse.swt.widgets.Shell;
 
 /**
  * Adapter zur Anpassund der BusinessOffice-Referenzen Praeferenz

@@ -75,16 +75,16 @@
 			<repository location="https://archive.eclipse.org/egit/updates-0.8/"/>
 		</location>
 		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-			<repository location="file:/media/dieter/MAXONE/UpdateSites/Basis/repository/"/>
-			<unit id="it.naturtalent.feature.basis.feature.group" version="0.0.0"/>
+			<repository location="ftp://natur-talent/public/UpdateSites/Basis/repository"/>
+			<unit id="it.naturtalent.feature.basis.feature.group" version="1.0.0.201911182229"/>
 		</location>
 		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-			<repository location="file:/media/dieter/MAXONE/UpdateSites/Office/repository/"/>
-			<unit id="it.naturtalent.features.office.feature.group" version="0.0.0"/>
+			<repository location="ftp://natur-talent/public/UpdateSites/Libreoffice/repository"/>
+			<unit id="it.naturtalent.feature.libreoffice.feature.group" version="1.0.0.201911182233"/>
 		</location>
 		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-			<repository location="file:/media/dieter/MAXONE/UpdateSites/Libreoffice/repository/"/>
-			<unit id="it.naturtalent.feature.libreoffice.feature.group" version="0.0.0"/>
+			<repository location="ftp://natur-talent/public/UpdateSites/Office/repository"/>
+			<unit id="it.naturtalent.features.office.feature.group" version="1.0.0.201911172247"/>
 		</location>
 	</locations>
 </target>

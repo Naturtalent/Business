@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Ui
+Bundle-Name: Business
 Bundle-SymbolicName: it.naturtalent.business.office;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: Dieter Apel
