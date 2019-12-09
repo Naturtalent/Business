@@ -46,7 +46,7 @@ public class BusinessTemplatePreferenceComposite extends OfficeTemplatePreferenc
 	protected void init()
 	{
 		// alle Template-Files aus dem TemplateVerzeichnis einlesen
-		templateNames = BusinessTemplatePreferenceAdapter.readTelekomTemplateNames();
+		templateNames = BusinessTemplatePreferenceAdapter.readBusinessTemplateNames();
 		checkboxTableViewer.setInput(templateNames);
 		updateWidgets();
 	}

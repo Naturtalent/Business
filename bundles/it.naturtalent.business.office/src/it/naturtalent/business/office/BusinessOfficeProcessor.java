@@ -38,7 +38,7 @@ public class BusinessOfficeProcessor
 	@Execute
 	void init (IEventBroker eventBroker, IEclipseContext context)
 	{
-		// ein Telekomanschreiben-FactoryAdapter im Factory-Repository eintragen
+		// ein Anschreiben-FactoryAdapter im Factory-Repository eintragen
 		if(writeAdapterFactoryRepository != null)
 			writeAdapterFactoryRepository.getWriteAdapterFactories().add(new ODFBusinessWriteAdapterFactory());
 		

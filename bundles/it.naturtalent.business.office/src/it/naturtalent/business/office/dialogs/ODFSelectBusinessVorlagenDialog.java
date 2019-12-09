@@ -15,7 +15,8 @@ import it.naturtalent.business.office.preferences.PreferenceUtils;
 import it.naturtalent.business.office.preferences.BusinessTemplatePreferenceAdapter;
 
 /**
- * Mit diesem Dialog wird die Vorlage fuer das Business-Textdokument festgelegt.
+ * Mit diesem Dialog wird eine Vorlage fuer das Business-Textdokument festgelegt.
+ * Dieser Dialog wird vom BusinessWriteAdapter aufgerufen.
  * 
  * @author dieter
  *
@@ -34,7 +35,8 @@ public class ODFSelectBusinessVorlagenDialog extends ODFSelectVorlagenDialog
 	 */
 	protected List<String>getInputList()
 	{
-		return BusinessTemplatePreferenceAdapter.readTelekomTemplateNames();
+		// die Verwaltung der Templates erfolgt im Preferenzadapter
+		return BusinessTemplatePreferenceAdapter.readBusinessTemplateNames();
 	}
 
 	// die praeferenzierte Vorlage wird selektiert

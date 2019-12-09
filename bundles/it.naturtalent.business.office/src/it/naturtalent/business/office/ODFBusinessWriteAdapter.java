@@ -99,7 +99,9 @@ public class ODFBusinessWriteAdapter implements IODFWriteAdapter
 	}
 
 	/*
-	 * Vorlage kopieren
+	 * Der Adapter sellt einen Dialog 'ODFSelectBusinessVorlagenDialog' zur Verfügung, mit dem ein 
+	 * Template ausgewählt werden kann.
+	 *   
 	 */
 	private File createODFFile(File destDir)
 	{		

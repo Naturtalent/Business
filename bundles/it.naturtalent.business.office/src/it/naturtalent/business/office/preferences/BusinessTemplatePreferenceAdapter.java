@@ -78,7 +78,7 @@ public class BusinessTemplatePreferenceAdapter extends OfficeTemplatePreferenceA
 	/*
 	 * die Namen der BusinessVorlagen auflisten
 	 */
-	public static List<String> readTelekomTemplateNames()
+	public static List<String> readBusinessTemplateNames()
 	{
 		List<String>templateNames = new ArrayList<String>();
 		
