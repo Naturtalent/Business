@@ -1,27 +1,13 @@
 package it.naturtalent.business.office.preferences;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.core.runtime.preferences.DefaultScope;
+import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Event;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Listener;
-import org.eclipse.ui.forms.widgets.Hyperlink;
 
 import it.naturtalent.application.IPreferenceNode;
 import it.naturtalent.business.office.Messages;
-import it.naturtalent.e4.office.ui.OfficeUtils;
-import it.naturtalent.e4.office.ui.preferences.OfficeDefaultPreferenceUtils;
-import it.naturtalent.e4.preferences.AbstractPreferenceAdapter;
-import it.naturtalent.office.model.address.AddressPackage;
-import it.naturtalent.office.model.address.Referenz;
-import it.naturtalent.office.model.address.Referenzen;
-
-import org.eclipse.swt.widgets.Shell;
+import it.naturtalent.e4.office.ui.preferences.OfficeReferenzPreferenceAdapter;
 
 /**
  * Adapter zur Anpassund der BusinessOffice-Referenzen Praeferenz
@@ -33,11 +19,17 @@ import org.eclipse.swt.widgets.Shell;
  * @author dieter
  *
  */
-public class BusinessReferenzPreferenceAdapter extends AbstractPreferenceAdapter
+public class BusinessReferenzPreferenceAdapter extends OfficeReferenzPreferenceAdapter
 {
-	// Composite Referenzcomposite
-	private BusinessReferenzPreferenceComposite referenzComposite;
-	
+	/**
+	 * Konstruktion
+	 */
+	public BusinessReferenzPreferenceAdapter()
+	{
+		instancePreferenceNode = InstanceScope.INSTANCE.getNode(PreferenceUtils.ROOT_BUSINESS_PREFERENCES_NODE);
+		defaultPreferenceNode = DefaultScope.INSTANCE.getNode(PreferenceUtils.ROOT_BUSINESS_PREFERENCES_NODE);	
+	}
+
 	@Override
 	public String getNodePath()
 	{
@@ -45,105 +37,18 @@ public class BusinessReferenzPreferenceAdapter extends AbstractPreferenceAdapter
 	}
 
 	@Override
-	public String getLabel()
-	{		
-		return Messages.BusinessReferenzPreferenceAdapter_ReferenzenLabel; //$NON-NLS-N$
-	}
-	
-	@Override
 	public Composite createNodeComposite(IPreferenceNode referenceNode)
 	{
 		referenceNode.setTitle(getLabel());
 		
 		// Checkliste zur Anzeige der Referenznamen
-		referenzComposite = new BusinessReferenzPreferenceComposite(referenceNode.getParentNode(), SWT.NONE);
+		referenceComposite = new BusinessReferenzPreferenceComposite(referenceNode.getParentNode(), SWT.NONE);
 		
-		// einen Infotext hinzufuegen
-		Label label = new Label(referenzComposite, SWT.NONE);
-		label.setText("Referenzen definieren, einen präferenzierten selektieren"); //$NON-NLS-N$; //$NON-NLS-1$
-		
-		new Label(referenzComposite, SWT.NONE);
-		new Label(referenzComposite, SWT.NONE);
-		new Label(referenzComposite, SWT.NONE);
-		
-		Hyperlink hyperlinkExport = new Hyperlink(referenzComposite, SWT.NONE);
-		hyperlinkExport.setText("exportieren"); //$NON-NLS-1$
-		hyperlinkExport.setToolTipText("alle Referenzen exportieren"); //$NON-NLS-1$
-		hyperlinkExport.addListener(SWT.MouseDown, new Listener() {
+		// vervollstaendigt 'absenderComposite' um weitere Widgets (ex/import Hyperlinks) 
+		init(referenceComposite);
 
-            @Override
-            public void handleEvent(Event event) 
-            {
-            	Referenzen referenzen = (Referenzen) OfficeUtils.findObject(AddressPackage.eINSTANCE.getReferenzen());
-            	OfficeDefaultPreferenceUtils.exportPreference(referenzen);
-            }
-        });
-		
-		
-		new Label(referenzComposite, SWT.NONE);
-		
-		Hyperlink hyperlinkImport = new Hyperlink(referenzComposite, SWT.NONE);
-		hyperlinkImport.setText("importieren"); //$NON-NLS-1$
-		hyperlinkImport.setToolTipText("Referenzen importieren"); //$NON-NLS-1$
-		hyperlinkImport.addListener(SWT.MouseDown, new Listener() {
-
-            @Override
-            public void handleEvent(Event event) 
-            {
-               	List<EObject>eObjects = OfficeDefaultPreferenceUtils.importPreference();
-            	if((eObjects != null) && (!eObjects.isEmpty()))
-            	{
-            		if(eObjects.get(0) instanceof Referenzen)
-            		{     
-            			Referenzen referenzen = (Referenzen) eObjects.get(0); 
-            			EList<Referenz>allReferenzen = referenzen.getReferenzen();            			
-            			
-            			// importierte Referenzen in einer Liste sammeln
-            			if(allReferenzen != null)
-            			{
-            				List<Referenz>importedReferenzenList = new ArrayList<Referenz>();            				
-            				for(Referenz importReferenz : allReferenzen)            				
-            					importedReferenzenList.add(importReferenz);
-            				
-            				referenzComposite.importReferenzen(importedReferenzenList);
-            			}
-            		}
-            	}
-            }
-        });
-		
-
-		return referenzComposite;
+		return referenceComposite;
 	}
-
-	@Override
-	public void restoreDefaultPressed()
-	{		
-		// TODO Auto-generated method stub
-	}
-
-	/* 
-	 * Abbruch, die aktuelle Praeferenzliste wird nicht gesoeichert.
-	 * Aenderungen am EMF-Modell werden rueckgaenig gemacht 'undo'.
-	 *  
-	 * (non-Javadoc)
-	 * @see it.naturtalent.e4.preferences.AbstractPreferenceAdapter#cancelPressed()
-	 */
-	@Override
-	public void cancelPressed()
-	{	
-		referenzComposite.doCancel();
-	}
-
-	@Override
-	public void appliedPressed()
-	{
-		// TODO Auto-generated method stub
-		referenzComposite.appliedPressed();
-	}
-	
-
-
 
 }
 

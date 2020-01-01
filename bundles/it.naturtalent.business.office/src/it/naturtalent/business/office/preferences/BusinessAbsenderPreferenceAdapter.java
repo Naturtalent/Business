@@ -34,9 +34,6 @@ import it.naturtalent.office.model.address.Absender;
  */
 public class BusinessAbsenderPreferenceAdapter extends OfficeAbsenderPreferenceAdapter
 {	
-	// UI der Absender-Praeferenzliste
-	private BusinessAbsenderPreferenceComposite absenderComposite;
-	
 	/**
 	 * Konstruktion
 	 */
@@ -52,12 +49,6 @@ public class BusinessAbsenderPreferenceAdapter extends OfficeAbsenderPreferenceA
 		return Messages.BusinessAbsenderPreferenceAdapter_PreferenceBusinessLabel; //$NON-NLS-N$
 	}
 
-	@Override
-	public String getLabel()
-	{		
-		return Messages.BusinessAbsenderPreferenceAdapter_SenderLabel; //$NON-NLS-N$
-	}
-	
 	@Override
 	public Composite createNodeComposite(IPreferenceNode referenceNode)
 	{
@@ -78,36 +69,5 @@ public class BusinessAbsenderPreferenceAdapter extends OfficeAbsenderPreferenceA
 		absenderComposite.importAbsender(importedAbsenderList);
 	}
 
-
-	/*
-	 * Apply, die Daten werden festgeschrieben
-	 * 
-	 */
-	@Override
-	public void appliedPressed()
-	{
-		absenderComposite.appliedPressed();
-	}
-
-	/* 
-	 * Abbruch, die aktuelle Praeferenzliste wird nicht gesoeichert.
-	 * Aenderungen am EMF-Modell werden rueckgaenig gemacht 'undo'.
-	 *  
-	 * (non-Javadoc)
-	 * @see it.naturtalent.e4.preferences.AbstractPreferenceAdapter#cancelPressed()
-	 */
-	@Override
-	public void cancelPressed()
-	{	
-		absenderComposite.doCancel();
-	}
-
-	@Override
-	public void restoreDefaultPressed()
-	{
-		// TODO Auto-generated method stub
-		
-	}
-	
 }
 

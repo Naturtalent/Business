@@ -33,45 +33,31 @@ public class BusinessFootNotePreferenceAdapter extends OfficeFootNotePreferenceA
 
 	@Override
 	public String getNodePath()
-	{
+	{			
 		return Messages.BusinessFootNotePreferenceAdapter_PreferenceBusinessLabel; //$NON-NLS-N$
 	}
 
-	@Override
-	public String getLabel()
-	{		
-		return Messages.BusinessFootNotePreferenceAdapter_FootnoteLabel; //$NON-NLS-N$
-	}
-	
 	@Override
 	public Composite createNodeComposite(IPreferenceNode referenceNode)
 	{
 		referenceNode.setTitle(getLabel());
 		
-		// vervollstaendigt 'footNoteComposite' um weitere Widgets (ex/import Hyperlinks) 
+		// OfficeContext und Preferenzknoten anf Businiessbereich anpassen
 		footNoteComposite = new BusinessFootNotePreferenceComposite(referenceNode.getParentNode(), SWT.NONE);
 		
-		// vervollstaendigt 'absenderComposite' um weitere Widgets (ex/import Hyperlinks) 
+		// vervollstaendigt 'footNoteComposite' um weitere Widgets (ex/import Hyperlinks) 
 		init(footNoteComposite);
 				
 		return footNoteComposite;
 	}
 
-	/* 
-	 * Es wird nur der Default-FussNote zurueckgesetzt, alle anderen bleiben erhalten und unverändert. 
-	 * 
-	 */
-	@Override
-	public void restoreDefaultPressed()
-	{		
-
-	}
-
+	/*
 	@Override
 	public void appliedPressed()
 	{	
 		footNoteComposite.appliedPressed();
 	}
+	*/
 
 	/* 
 	 * Abbruch, die aktuelle Praeferenzliste wird nicht gesoeichert.
@@ -80,12 +66,25 @@ public class BusinessFootNotePreferenceAdapter extends OfficeFootNotePreferenceA
 	 * (non-Javadoc)
 	 * @see it.naturtalent.e4.preferences.AbstractPreferenceAdapter#cancelPressed()
 	 */
-	@Override
+	/*
+	@Override	
 	public void cancelPressed()
 	{				
 		footNoteComposite.doCancel();
 	}
+	*/
+
+	/* 
+	 * Es wird nur der Default-FussNote zurueckgesetzt, alle anderen bleiben erhalten und unverändert. 
+	 * 
+	 */
+	/*
+	@Override
+	public void restoreDefaultPressed()
+	{		
 	
+	}
+	*/
 	
 
 }

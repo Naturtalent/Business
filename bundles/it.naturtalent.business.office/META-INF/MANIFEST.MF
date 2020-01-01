@@ -35,7 +35,11 @@ Require-Bundle: it.naturtalent.e4.office.ui,
  org.eclipse.emf.ecp.edit,
  org.eclipse.emf.ecp.common.ui,
  it.naturtalent.e4.project.expimp,
- it.naturtalent.e4.project.ui
+ it.naturtalent.e4.project.ui,
+ it.naturtalent.e4.project,
+ it.naturtalent.icons;bundle-version="1.0.0",
+ it.naturtalent.libreoffice;bundle-version="1.0.0",
+ it.naturtalent.jdom
 Import-Package: javax.annotation;version="1.2.0"
 Eclipse-BundleShape: dir
 Bundle-Activator: it.naturtalent.business.office.Activator

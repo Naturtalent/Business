@@ -18,6 +18,7 @@ import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 
+import it.naturtalent.business.office.export.DHLKontakteAdapter;
 import it.naturtalent.business.office.preferences.BusinessAbsenderPreferenceAdapter;
 import it.naturtalent.business.office.preferences.BusinessFootNotePreferenceAdapter;
 import it.naturtalent.business.office.preferences.BusinessReferenzPreferenceAdapter;
@@ -25,6 +26,7 @@ import it.naturtalent.business.office.preferences.BusinessSignaturePreferenceAda
 import it.naturtalent.business.office.preferences.BusinessTemplatePreferenceAdapter;
 import it.naturtalent.e4.office.ui.IODFWriteAdapterFactoryRepository;
 import it.naturtalent.e4.preferences.IPreferenceRegistry;
+import it.naturtalent.e4.project.IExportAdapterRepository;
 
 
 public class BusinessOfficeProcessor
@@ -34,6 +36,8 @@ public class BusinessOfficeProcessor
 	
 	// Registry aller Praeferenceadapter
 	private @Inject @Optional IPreferenceRegistry preferenceRegistry;
+	
+	private @Inject @Optional IExportAdapterRepository exportAdapterRepository;
 	
 	@Execute
 	void init (IEventBroker eventBroker, IEclipseContext context)
@@ -57,13 +61,14 @@ public class BusinessOfficeProcessor
 				ResourcesPlugin.getWorkspace().getRoot().getLocation().toFile(),
 				it.naturtalent.e4.office.ui.Activator.OFFICEDATADIR + File.separator + ODFBusinessWriteAdapter.ODFTEXT_TEMPLATE_DIRECTORY);
 
-		if(!destOfficeWorkspaceDir.exists())
-		{
+		//if(!destOfficeWorkspaceDir.exists())
+		//{
 			// existiert das Verzeichnis noch nicht wird es initialisiert
 			Bundle bundle = FrameworkUtil.getBundle(this.getClass());
 			BundleContext bundleContext = bundle.getBundleContext();
 			URL urlPluginTemplate = FileLocator.find(bundleContext.getBundle(),
 					new Path(ODFBusinessWriteAdapter.PLUGIN_TEMPLATE_DIR), null);
+			
 			try
 			{
 				// Quelle ist das Verzeichnis mit den hardcodierten Vorlagen im PlugIn
@@ -76,6 +81,11 @@ public class BusinessOfficeProcessor
 			{
 				e.printStackTrace();
 			}
+		//}
+		
+		if(exportAdapterRepository != null)
+		{
+			exportAdapterRepository.addExportAdapter(new DHLKontakteAdapter());
 		}
 	}
 	
