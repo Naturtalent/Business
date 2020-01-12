@@ -53,11 +53,11 @@ public class ODFDHLCSVExportAdapter implements IODFCalcAdapter
 	
 	private Table odfTable;
 		
-	private final static String TABLENAME = "BeispielCSVImport";
+	private final static String TABLENAME = "ExportTable";
 	
 	// Index der ersten Zeile in der Zieltabelle
-	private int firstRowIndex = 6;
-	private int receiverCellIndex = 8;
+	private int firstRowIndex = 0;
+	private int receiverCellIndex = 7;
 	
 	@Override
 	public IWizard createWizard(IEclipseContext context)
@@ -161,11 +161,11 @@ public class ODFDHLCSVExportAdapter implements IODFCalcAdapter
 	// Sender exportieren
 	public void exportSender(Kontakt sender)
 	{
-		receiverCellIndex = 1;
+		receiverCellIndex = 0;
 		exportReceiver(++firstRowIndex, sender);
 	}
 	
-	
+	// Empfaenger eintragen
 	private void exportReceiver(int rowIDX, Kontakt kontakt)
 	{		
 		int cellIdx = receiverCellIndex;
@@ -215,6 +215,7 @@ public class ODFDHLCSVExportAdapter implements IODFCalcAdapter
 			row.getCellByIndex(++cellIdx).setStringValue(ort);
 		}
 		
+		/*
 		// Land wird im Kontakt->Kommunikationsfeld erwartet
 		String countryXML = kontakt.getKommunikation();
 		
@@ -223,6 +224,7 @@ public class ODFDHLCSVExportAdapter implements IODFCalcAdapter
 		row.getCellByIndex(++cellIdx).setStringValue(country);
 		
 		System.out.println(country);
+		*/
 		
 		
 		 
